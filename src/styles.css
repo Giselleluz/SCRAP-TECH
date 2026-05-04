@@ -1,0 +1,214 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Rubik+Mono+One&family=Caveat:wght@400;700&family=Permanent+Marker&family=Bungee+Shade&family=Shrikhand&family=Monoton&family=Bowlby+One+SC&display=swap');
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hot-pink: var(--hot-pink);
+  --color-cyan-zine: var(--cyan-zine);
+  --color-lime-zine: var(--lime-zine);
+  --color-purple-zine: var(--purple-zine);
+  --color-yellow-tape: var(--yellow-tape);
+  --color-orange-zine: var(--orange-zine);
+  --font-typewriter: 'Special Elite', monospace;
+  --font-cutout: 'Rubik Mono One', sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-handwriting: 'Caveat', cursive;
+  --font-neon: 'Monoton', cursive;
+  --font-bold-cut: 'Bowlby One SC', sans-serif;
+  --font-shrikhand: 'Shrikhand', cursive;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.96 0.02 90);
+  --foreground: oklch(0.18 0.02 280);
+  --card: oklch(0.98 0.015 85);
+  --card-foreground: oklch(0.18 0.02 280);
+  --popover: oklch(0.98 0.015 85);
+  --popover-foreground: oklch(0.18 0.02 280);
+  --primary: oklch(0.65 0.28 5);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.78 0.18 200);
+  --secondary-foreground: oklch(0.18 0.02 280);
+  --muted: oklch(0.92 0.02 85);
+  --muted-foreground: oklch(0.45 0.04 280);
+  --accent: oklch(0.88 0.22 100);
+  --accent-foreground: oklch(0.18 0.02 280);
+  --destructive: oklch(0.6 0.27 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.18 0.02 280);
+  --input: oklch(0.92 0.02 85);
+  --ring: oklch(0.65 0.28 5);
+
+  --hot-pink: oklch(0.68 0.28 0);
+  --cyan-zine: oklch(0.78 0.18 210);
+  --lime-zine: oklch(0.92 0.22 120);
+  --purple-zine: oklch(0.55 0.25 305);
+  --yellow-tape: oklch(0.92 0.2 95);
+  --orange-zine: oklch(0.72 0.22 50);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    color: var(--color-foreground);
+    background-color: #f4ecd8;
+    background-image:
+      linear-gradient(to right, oklch(0.78 0.18 210 / 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.78 0.18 210 / 0.18) 1px, transparent 1px),
+      radial-gradient(at 20% 30%, oklch(0.68 0.28 0 / 0.06), transparent 50%),
+      radial-gradient(at 80% 70%, oklch(0.55 0.25 305 / 0.06), transparent 50%);
+    background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
+    font-family: var(--font-typewriter);
+  }
+}
+
+@layer utilities {
+  .paper-texture {
+    background-color: #fdfaf0;
+    background-image:
+      radial-gradient(at 10% 20%, rgba(0,0,0,0.04) 0px, transparent 50%),
+      radial-gradient(at 90% 80%, rgba(0,0,0,0.06) 0px, transparent 50%),
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 6px);
+    box-shadow: inset 0 0 60px rgba(120, 80, 20, 0.08);
+  }
+
+  .torn-edge {
+    -webkit-mask-image: radial-gradient(circle at 4px 4px, transparent 3px, black 3.5px);
+    -webkit-mask-size: 8px 8px;
+  }
+
+  .ransom-note > * {
+    display: inline-block;
+    padding: 0.05em 0.3em;
+    margin: 0 0.1em;
+    line-height: 1;
+  }
+
+  .wiggle {
+    animation: wiggle 2.5s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-1.2deg); }
+    50% { transform: rotate(1.5deg); }
+  }
+
+  .swing-hover {
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+  }
+  .swing-hover:hover {
+    transform: rotate(-2deg) scale(1.04) translateY(-3px);
+  }
+
+  .tape {
+    position: absolute;
+    background: oklch(0.92 0.2 95 / 0.85);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    border-left: 1px dashed rgba(0,0,0,0.1);
+    border-right: 1px dashed rgba(0,0,0,0.1);
+    background-image: repeating-linear-gradient(45deg, transparent 0 6px, rgba(255,255,255,0.25) 6px 8px);
+  }
+
+  .tape-pink { background-color: oklch(0.78 0.22 0 / 0.78); }
+  .tape-cyan { background-color: oklch(0.82 0.16 200 / 0.78); }
+  .tape-lime { background-color: oklch(0.92 0.22 120 / 0.78); }
+
+  .dashed-cut {
+    border: 2px dashed var(--foreground);
+  }
+
+  .polaroid {
+    background: #fdfbf2;
+    padding: 12px 12px 50px 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  }
+
+  .speech-bubble {
+    position: relative;
+    background: #fffef8;
+    border: 2.5px solid #111;
+    border-radius: 18px 24px 14px 22px / 22px 16px 22px 16px;
+    padding: 14px 16px;
+    filter: url(#wobbly);
+  }
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 28px;
+    width: 22px; height: 22px;
+    background: #fffef8;
+    border-right: 2.5px solid #111;
+    border-bottom: 2.5px solid #111;
+    transform: rotate(35deg) skew(-15deg);
+  }
+
+  .sticker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: var(--font-bold-cut);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.85), 0 4px 6px rgba(0,0,0,0.2);
+    border: 2px solid #111;
+  }
+
+  .scribble-underline {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'><path d='M2 8 Q 50 2 100 7 T 198 6' stroke='%23ec0867' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 8px;
+    padding-bottom: 10px;
+  }
+
+  .postit {
+    background: oklch(0.92 0.2 95);
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.18), inset 0 -8px 0 rgba(0,0,0,0.04);
+  }
+
+  .grid-paper {
+    background-color: #fdfbf2;
+    background-image:
+      linear-gradient(oklch(0.78 0.18 210 / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.78 0.18 210 / 0.3) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .xerox {
+    filter: contrast(1.15) saturate(1.4) hue-rotate(-5deg);
+    mix-blend-mode: multiply;
+  }
+}
