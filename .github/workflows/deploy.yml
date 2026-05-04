@@ -44,8 +44,10 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Copy client files to root
-      run: cp -r dist/client/* dist/
+    - name: Prepare dist folder
+      run: |
+        mkdir -p dist
+        cp -r dist/client/* dist/
 
     - name: Create 404.html for SPA routing
       run: cp dist/index.html dist/404.html
